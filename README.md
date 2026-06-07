@@ -82,7 +82,22 @@ Heavy augmentation (mosaic, mixup, rotation, HSV jitter, copy-paste) compensates
 for small datasets. Domain adaptation across video types (aerial vs side-view) is
 done by annotating each domain and merging.
 
-**Results (merged tank dataset):** mAP50 = 0.92, mAP50-95 = 0.79.
+### Training Results
+
+| Model | mAP@50 | mAP@50-95 | Precision | Recall |
+|-------|:------:|:---------:|:---------:|:------:|
+| Tank — YOLO26n | 0.928 | **0.799** | 0.923 | 0.892 |
+| Tank — YOLOv8n (merged) | **0.939** | 0.790 | 1.000 | 0.851 |
+| Cable-car — YOLOv8n | 0.891 | 0.393 | 0.964 | 0.792 |
+
+**Tank YOLO26n training curves & PR curve:**
+
+| Loss / mAP over epochs | Precision-Recall |
+|:---:|:---:|
+| ![curves](results/tank_yolo26n/training_curves.png) | ![pr](results/tank_yolo26n/pr_curve.png) |
+
+📊 **Full metrics, confusion matrices, and sample predictions for all three
+models → [results/README.md](results/README.md)**
 
 Pre-trained weights are in [`weights/`](weights/):
 - `tank_yolo26n.pt` — YOLO26n tank detector
@@ -132,6 +147,8 @@ the convenience wrapper that runs remotely and copies results back.
 
 ## Performance Summary (Jetson AGX Orin, max clocks)
 
+![Jetson Benchmark](results/jetson_benchmark.png)
+
 ### Detection only
 | Precision | FPS | Speedup |
 |-----------|-----|---------|
@@ -153,8 +170,9 @@ the convenience wrapper that runs remotely and copies results back.
 annotation/        LocateAnything auto-annotation (code only — model auto-downloads)
 training/          YOLO training + dataset conversion scripts
 pc_pipeline/       Python FastMOT (modified) — workstation tracking
-jetson_pipeline/   C++ TensorRT pipeline — Jetson deployment
+jetson_pipeline/   C++ TensorRT pipeline + pre-built engines — Jetson deployment
 weights/           Pre-trained YOLO detectors (.pt)
+results/           Training curves, PR/confusion plots, benchmark charts
 docs/              Architecture slides
 ```
 
