@@ -9,6 +9,16 @@ in video — from **automatic annotation** to **YOLO training** to real-time
 | **Workstation (PC)** | Python ([`pc_pipeline/`](pc_pipeline/)) | YOLOv8 / YOLO26 (PyTorch) | ~36 FPS |
 | **Jetson AGX Orin** | C++ / TensorRT ([`jetson_pipeline/`](jetson_pipeline/)) | YOLO26n FP16 TRT | **~93 FPS** |
 
+## Demos
+
+| Jetson C++ — 93 FPS (smoothed) | PC FastMOT + PyTorch ReID |
+|:---:|:---:|
+| ![jetson](demos/gifs/tank4_jetson_cpp_smooth.gif) | ![reid](demos/gifs/tank4_pc_fastmot_reid.gif) |
+| **Jetson C++ — single tank** | **Cable-car detector** |
+| ![tank1](demos/gifs/tank1_jetson_cpp.gif) | ![cablecar](demos/gifs/cablecar.gif) |
+
+▶️ Full-resolution clips (all scenes) in [`demos/`](demos/).
+
 ---
 
 ## Pipeline Overview
