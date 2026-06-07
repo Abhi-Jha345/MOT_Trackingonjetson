@@ -45,3 +45,6 @@ wandb/
 
 # Keep pre-built Jetson engines (platform-specific, documented)
 !jetson_pipeline/engines/*.engine
+
+# Keep demo output videos
+!demos/*.mp4
