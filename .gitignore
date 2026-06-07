@@ -42,3 +42,6 @@ wandb/
 
 # Keep our trained weights despite *.pt patterns elsewhere
 !weights/*.pt
+
+# Keep pre-built Jetson engines (platform-specific, documented)
+!jetson_pipeline/engines/*.engine
