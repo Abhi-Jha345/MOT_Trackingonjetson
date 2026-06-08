@@ -17,9 +17,7 @@ in video — from **automatic annotation** to **YOLO training** to real-time
 | **Jetson C++ — single tank** | **Cable-car detector** |
 | ![tank1](demos/gifs/tank1_jetson_cpp.gif) | ![cablecar](demos/gifs/cablecar.gif) |
 
-▶️ Full-resolution clips (all scenes) in [`demos/`](demos/).
-
----
+Full-resolution clips (all scenes) in [`demos/`](demos/).
 
 ## Pipeline Overview
 
@@ -49,8 +47,6 @@ in video — from **automatic annotation** to **YOLO training** to real-time
                          YOLO26n FP16 engine + Kalman + KLT, no Python overhead
 ```
 
----
-
 ## 1. Annotation — `annotation/`
 
 Uses NVIDIA's **LocateAnything-3B** (Eagle/Embodied) — an open-vocabulary
@@ -75,8 +71,6 @@ downscaled to ≤1280 px for inference only (full-res images are still saved).
 
 > **Note:** The LocateAnything-3B model weights are **not** included in this repo —
 > they are auto-downloaded from HuggingFace (`nvidia/LocateAnything-3B`).
-
----
 
 ## 2. Training — `training/`
 
@@ -106,15 +100,13 @@ done by annotating each domain and merging.
 |:---:|:---:|
 | ![curves](results/tank_yolo26n/training_curves.png) | ![pr](results/tank_yolo26n/pr_curve.png) |
 
-📊 **Full metrics, confusion matrices, and sample predictions for all three
+**Full metrics, confusion matrices, and sample predictions for all three
 models → [results/README.md](results/README.md)**
 
 Pre-trained weights are in [`weights/`](weights/):
 - `tank_yolo26n.pt` — YOLO26n tank detector
 - `tank_yolov8n.pt` — YOLOv8n tank detector
 - `cablecar_yolov8n.pt` — cable-car detector
-
----
 
 ## 3a. PC Tracking (Python) — `pc_pipeline/`
 
@@ -153,8 +145,6 @@ cmake .. && make -j
 See [jetson_pipeline/README.md](jetson_pipeline/README.md) for engine export and
 the convenience wrapper that runs remotely and copies results back.
 
----
-
 ## Performance Summary (Jetson AGX Orin, max clocks)
 
 ![Jetson Benchmark](results/jetson_benchmark.png)
@@ -171,8 +161,6 @@ the convenience wrapper that runs remotely and copies results back.
 |----------------|-----|
 | Python FastMOT (FP16 TRT) | 36 |
 | **C++ TensorRT** | **93** |
-
----
 
 ## Repository Layout
 
